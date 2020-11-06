@@ -68,14 +68,13 @@ class SleepTrackerFragment : Fragment() {
             nightId -> sleepTrackerViewModel.onSleepNightClicked(nightId)
         })
         manager.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup(){
-            override fun getSpanSize(position: Int): Int {
+            override fun getSpanSize(position: Int) =
                 when (adapter.getItemViewType(position)) {
-                    0 -> return 3
-                    1 -> return 1
+                0 -> 3
+                else -> 1
                 }
-                return 1
-            }
         }
+
         binding.sleepList.layoutManager = manager
 
 
